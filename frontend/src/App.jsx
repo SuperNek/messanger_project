@@ -1,9 +1,13 @@
-import Register from "./Register"
+import Login from "./pages/login/Login"
+import Register from "./pages/register/Register"
 
 function App() {
 
   return (
-    <Register />
+    <div className="bg-violet-950 h-screen flex items-center justify-center">
+      <Login />
+      <Register />
+    </div>
   )
 }
 
