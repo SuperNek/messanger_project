@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div className="bg-violet-950 h-screen flex items-center justify-center">
-      <Login></Login>
+      <Register />
     </div>
   )
 }
