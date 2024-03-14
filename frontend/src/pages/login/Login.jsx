@@ -12,19 +12,19 @@ const Login = () => {
         </h1>
         <form>
             <div className='mb-5'>
-            <label className="input flex items-center gap-2 h-15 bg-neutral-500 text-white">
+            <label className="input flex items-center gap-2 h-15 bg-gray-600 text-white">
                 <IoPersonCircle className='w-9 h-9' />
                 <input type="text" className="grow text-lg mb-1 " placeholder="Username" />
             </label>
             </div>
             <div>
-            <label className="input flex items-center gap-2 h-15 bg-neutral-500 text-white">
+            <label className="input flex items-center gap-2 h-15 bg-gray-600 text-white">
                 <IoMdKey className='w-9 h-9'/>
                 <input type="password" className="grow text-lg mb-1 text-white" placeholder="Password"/>
-                <a className="label-text-alt hover:underline text-neutral-300" href='#'>Forgot password?</a>
+                <a className="label-text-alt hover:underline text-gray-300" href='#'>Forgot password?</a>
             </label>
             </div>
-            <a href="#" className='label-text-alt hover:underline text-neutral-300'>{"Don't have an account?"}</a>
+            <a href="#" className='label-text-alt hover:underline text-gray-300'>{"Don't have an account?"}</a>
             <div>
                 <button className='btn btn-outline btm-neutral btn-block mt-5 font-semibold text-2xl'>
                   <p className='mb-1'>Login</p>

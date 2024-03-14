@@ -4,7 +4,7 @@ import sasha from "../../assets/sanya.jpg"
 const Conversation = () => {
   return (
     <>
-        <div className='flex gap-2 items-center bor hover:bg-lime-500 rounded p-2 py-1 cursor-pointer'>
+        <div className='flex gap-6 items-center bor hover:bg-lime-500 rounded p-2 py-3 cursor-pointer'>
             <div className="avatar offline">
                 <div className="w-12 rounded-full">
                     <img src={sasha} alt='user avatar'/>
