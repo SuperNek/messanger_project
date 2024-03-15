@@ -4,7 +4,7 @@ import MessageInput from './MessageInput'
 import { IoChatbubbles } from "react-icons/io5";
 
 function MessageContainer() {
-    const noChatSelected = false;
+    const noChatSelected = true;
     return (
     <div className='w-full flex flex-col'>
         {noChatSelected ? <NoChatSelected /> : (
@@ -29,7 +29,7 @@ function NoChatSelected() {
         <h1 className='text-3xl font-semibold text-center text-gray-300 mb-6'>
             Select a chat to start messaging
         </h1>
-        <IoChatbubbles className='w-16 h-16'/>
+        <IoChatbubbles className='w-10 h-10  md:w-16 md:h-16'/>
     </div>
   )
 }

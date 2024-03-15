@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import User from "./models/user.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config()
 
@@ -19,21 +20,8 @@ app.get('/', (req, res) => {
     res.send("Hello World!");
 })
 
-app.get('/test', (req, res) => {
-    // test route http://localhost:8000/test
-    res.json('test ok');
-})
+app.use("/api/auth", authRoutes);
 
-app.post('/register', async (req, res) => {
-    // register route http://localhost:8000/register
-    const { username, password } = req.body;
-    const createdUser = await User.create({ username, password });
-
-    jwt.sign({userId:createdUser._id}, JWT_SECRET,(err, token) => {
-        if(err) throw err;
-        res.cookie('token', token).status(201).json('created ok');
-    });
-})
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

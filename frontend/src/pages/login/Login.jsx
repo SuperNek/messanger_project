@@ -1,6 +1,7 @@
 import React from 'react'
 import { IoPersonCircle } from "react-icons/io5";
 import { IoMdKey } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -24,7 +25,7 @@ const Login = () => {
                 <a className="label-text-alt hover:underline text-gray-300" href='#'>Forgot password?</a>
             </label>
             </div>
-            <a href="#" className='label-text-alt hover:underline text-gray-300'>{"Don't have an account?"}</a>
+            <Link to="/register" className='label-text-alt hover:underline text-gray-300'>{"Don't have an account?"}</Link>
             <div>
                 <button className='btn btn-outline btm-neutral btn-block mt-5 font-semibold text-2xl'>
                   <p className='mb-1'>Login</p>
