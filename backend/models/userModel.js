@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         unique: true,
@@ -8,7 +12,12 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minlength: 8
+    },
+    profilePicture: {
+        type: String,
+        default: ''
     }
 }, {timestamps: true});
 
