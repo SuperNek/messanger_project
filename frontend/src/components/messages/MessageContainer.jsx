@@ -4,9 +4,9 @@ import MessageInput from './MessageInput'
 import { IoChatbubbles } from "react-icons/io5";
 
 function MessageContainer() {
-    const noChatSelected = true;
+    const noChatSelected = false;
     return (
-    <div className='w-full flex flex-col'>
+    <div className='w-full hidden sm:hidden md:flex lg:flex flex-col'>
         {noChatSelected ? <NoChatSelected /> : (
         <>
         <div className='bg-gray-500 px-4 py-2 mb-2 text-center'>
