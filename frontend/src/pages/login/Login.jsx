@@ -22,7 +22,7 @@ const Login = () => {
             <label className="input flex items-center gap-2 h-15 bg-gray-600 text-white">
                 <IoMdKey className='w-9 h-9'/>
                 <input type="password" className="grow text-lg mb-1 text-white" placeholder="Password"/>
-                <a className="label-text-alt hover:underline text-gray-300" href='#'>Forgot password?</a>
+                <a className="label-text-alt hover:underline text-gray-300 text-nowrap md:text-wrap" href='#'>Forgot password?</a>
             </label>
             </div>
             <Link to="/register" className='label-text-alt hover:underline text-gray-300'>{"Don't have an account?"}</Link>
