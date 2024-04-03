@@ -1,8 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-import mongoose, { connect } from "mongoose";
-import jwt from "jsonwebtoken";
-import User from "./models/userModel.js";
 import authRoutes from "./routes/authRoutes.js";
 import connectDB from "./db/connect.js";
 

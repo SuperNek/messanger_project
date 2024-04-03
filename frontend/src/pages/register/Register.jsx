@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { IoSkull } from "react-icons/io5";
 import { IoMdKey } from "react-icons/io";
 import { IoPersonCircle } from "react-icons/io5";
 import { IoAlert } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import { useRegister } from '../../hooks/useRegister'
 
 const Register = () => {
+    
     const [inputs, setInputs] = React.useState({
         firstName: "",
         username: "",
@@ -13,9 +15,12 @@ const Register = () => {
         confirmPassword: "",
     })
 
-    const handleSubmit = (e) => {
+    const register = useRegister(inputs);
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(inputs);
+        await register(inputs);
     }
 
     return (
