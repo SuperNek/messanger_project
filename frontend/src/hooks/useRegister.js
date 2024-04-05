@@ -5,19 +5,35 @@ export const useRegister = () => {
     const [loading, setLoading] = useState(false);
 
     const register = async({firstName, username, password,confirmPassword}) => {
-        console.log("register func:",{firstName, username, password,confirmPassword});
         const isValid = handleValidation({firstName, username, password,confirmPassword});
 
         if(!isValid){
             console.log("dont valid")
             return 0;
         }
+        setLoading(true);
+        try{
+            console.log(JSON.stringify({firstName, username, password,confirmPassword}))
+            const res = await fetch("http://localhost:8000/api/auth/register/", {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({firstName, username, password,confirmPassword})
+            })
+        }
+        catch(error){
+            toast.error(error.message);
+        }
+        finally{
+            setLoading(false);
+        }
     }
-    return register;
+    return {loading, register};
 }
 
 const handleValidation = ({firstName, username, password,confirmPassword}) => {
-    console.log("to validation:", {firstName, username, password,confirmPassword})
     if(!firstName || !username || !password || !confirmPassword){
         toast.error('Fill in all fieds');
         return false

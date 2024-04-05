@@ -15,11 +15,10 @@ const Register = () => {
         confirmPassword: "",
     })
 
-    const register = useRegister(inputs);
+    const {loading, register} = useRegister(inputs);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(inputs);
         await register(inputs);
     }
 
