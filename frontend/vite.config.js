@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
+    proxy: { // delete this in deployment! use because of CORS error
       "/api": {
-        target: "http://localhost:8000"
+        target: 'http://localhost:8000',
       }
     }
   }
