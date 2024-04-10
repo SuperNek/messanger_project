@@ -1,8 +1,10 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/authContext";
 
 export const useRegister = () => {
     const [loading, setLoading] = useState(false);
+    const { setAuthUser } = useAuthContext();
 
     const register = async({firstName, username, password,confirmPassword}) => {
         const isValid = handleValidation({firstName, username, password,confirmPassword});
@@ -26,6 +28,9 @@ export const useRegister = () => {
             if(data.error){
                 throw new Error(data.error);
             }
+
+            localStorage.setItem("elysium_user", JSON.stringify(data))
+            setAuthUser(data);
         }
         catch(error){
             toast.error(error.message);
@@ -39,7 +44,7 @@ export const useRegister = () => {
 
 const handleValidation = ({firstName, username, password,confirmPassword}) => {
     if(!firstName || !username || !password || !confirmPassword){
-        toast.error('Fill in all fieds');
+        toast.error('Fill in all fields');
         return false
     }
 
@@ -49,7 +54,7 @@ const handleValidation = ({firstName, username, password,confirmPassword}) => {
     }
 
     if(password.length < 8){
-        toast.error("Password don't have at least 8 chars");
+        toast.error("Password must contains at least 8 chars");
         return false
     }
 
