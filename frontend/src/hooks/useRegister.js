@@ -14,14 +14,18 @@ export const useRegister = () => {
         setLoading(true);
         try{
             console.log(JSON.stringify({firstName, username, password,confirmPassword}))
-            const res = await fetch("http://localhost:8000/api/auth/register/", {
+            const res = await fetch("/api/auth/register/", {
                 method: "POST",
-                mode: "no-cors",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({firstName, username, password,confirmPassword})
             })
+
+            const data = res.json();
+            if(data.error){
+                throw new Error(data.error);
+            }
         }
         catch(error){
             toast.error(error.message);
