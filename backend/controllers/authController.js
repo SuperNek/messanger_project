@@ -1,5 +1,6 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import generateToken from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
     try {
@@ -32,12 +33,18 @@ export const register = async (req, res) => {
 
         await newUser.save();
 
-        res.status(201).json({
-            _id: newUser._id,
-            firstname: newUser.firstName,
-            username: newUser.username,
-            profilePicture: newUser.profilePicture
-        });
+        if(newUser){
+            generateToken(newUser._id, res);
+            await newUser.save();
+            res.status(201).json({
+                _id: newUser._id,
+                firstname: newUser.firstName,
+                username: newUser.username,
+                profilePicture: newUser.profilePicture
+            });
+        } else{
+            res.status(400).json({error: "Invalid user data"});
+        }
     } catch (error) {
         res.status(500).json({error: "Server error"});
         console.log("Error in register controller",error)
