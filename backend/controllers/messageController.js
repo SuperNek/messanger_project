@@ -27,6 +27,8 @@ export const sendMessage = async (req, res) => {
             conversation.messages.push(newMessage._id);
         }
 
+        await Promise.all([newMessage.save(), conversation.save()]);
+
         res.status(201).json(newMessage);
     } catch (error) {
         res.status(500).json({error: "Server error"});
