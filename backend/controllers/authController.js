@@ -51,10 +51,35 @@ export const register = async (req, res) => {
     }
 }
 
-export const logout = (req, res) => {
-    res.send('Logout')
-}
+export const login = async (req, res) => {
+    try{
+        const {username, password} = req.body;
+        const user = await User.findOne({username});
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
-export const login = (req, res) => {
-    res.send('Register')
+        if(!user || !isPasswordCorrect){
+            return res.status(400).json({error: "Invalid username or password"});
+        }
+
+        generateToken(user._id, res);
+
+        res.status(200).json({
+            _id: user._id,
+            firstname: user.firstName,
+            username: user.username,
+            profilePicture: user.profilePicture
+        })
+    } catch (error){
+        res.status(500).json({error: "Server error"});
+        console.log("Error in login controller",error.message);
+    }
+}
+export const logout = (req, res) => {
+    try {
+        res.cookie("jwt", "", {maxAge: 0});
+        res.status(200).json({message: "User logged out"});
+    } catch (error) {
+        res.status(500).json({error: "Server error"});
+        console.log("Error in logout controller",error.message);
+    }
 }
