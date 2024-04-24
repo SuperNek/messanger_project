@@ -5,7 +5,7 @@ import { useAuthContext } from "../contexts/authContext";
 
 export const useRegister = () => {
     const [loading, setLoading] = useState(false);
-    const { setAuthUser } = useAuthContext();
+    const {authUser, setAuthUser } = useAuthContext();
 
     const register = async({firstName, username, password,confirmPassword}) => {
         const isValid = handleValidation({firstName, username, password,confirmPassword});
@@ -17,7 +17,7 @@ export const useRegister = () => {
         setLoading(true);
         try{
             console.log(JSON.stringify({firstName, username, password,confirmPassword}))
-            const res = await fetch("/api/auth/register/", {
+            const res = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -25,11 +25,12 @@ export const useRegister = () => {
                 body: JSON.stringify({firstName, username, password,confirmPassword})
             })
 
-            const data = res.json();
+            const data = await res.json();
             if(data.error){
                 throw new Error(data.error);
             }
 
+            console.log(data);
             localStorage.setItem("elysium_user", JSON.stringify(data))
             setAuthUser(data);
         }
