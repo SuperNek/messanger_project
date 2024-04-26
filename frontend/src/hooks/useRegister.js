@@ -30,7 +30,6 @@ export const useRegister = () => {
                 throw new Error(data.error);
             }
 
-            console.log(data);
             localStorage.setItem("elysium_user", JSON.stringify(data))
             setAuthUser(data);
         }

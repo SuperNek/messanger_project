@@ -68,8 +68,8 @@ const Register = () => {
                 </div>
                 <Link to="/login" className='label-text-alt hover:underline text-gray-300'>{"Already have an account?"}</Link>
                 <div>
-                    <button className='btn lg:btn-lg btn-outline btm-neutral btn-block mt-5 font-semibold text-base sm:text-xl lg-text-2xl'>
-                        <p className='mb-1'>Register</p>
+                    <button className='btn lg:btn-lg btn-outline btm-neutral btn-block mt-5 font-semibold text-base sm:text-xl lg-text-2xl' disabled={loading}>
+                        {loading ? <span className='loading loading-spinner'></span> : "Register" }
                     </button>
                 </div>
             </form>
