@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="bg-violet-950 h-screen flex items-center justify-center">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"}/>} />
+        <Route path="/login" element={ authUser ? <Navigate to="/" /> : <Login />} />
         <Route path="/register" element={authUser ? <Navigate to="/" /> : <Register />} />
       </Routes>
       <Toaster /> 
