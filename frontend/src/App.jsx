@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home"
 import Register from "./pages/register/Register"
 import { Route, Routes, Navigate} from "react-router-dom"
 import {Toaster} from "react-hot-toast"
-import { useAuthContext } from "./context/authContext"
+import { useAuthContext } from "./contexts/authContext"
 
 function App() {
   const {authUser} = useAuthContext();

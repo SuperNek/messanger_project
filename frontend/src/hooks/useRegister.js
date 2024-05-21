@@ -1,6 +1,6 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
-import { useAuthContext } from "../context/authContext";
+import { useAuthContext } from "../contexts/authContext";
 
 export const useRegister = () => {
     const [loading, setLoading] = useState(false);
