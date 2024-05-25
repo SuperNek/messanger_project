@@ -1,22 +1,30 @@
-import React from 'react'
-import sasha from "../../assets/sanya.jpg"
+import useConversation from "../../store/useConversation"
 
-const Conversation = () => {
-  return (
+const Conversation = ({conversation, lastIndex}) => {
+
+    const {selectedConversation, setSelectedConversation} = useConversation()
+
+    const isSelected = selectedConversation?._id === conversation._id
+
+    return (
     <>
-        <div className='flex gap-6 items-center bor hover:bg-gray-500 duration-200 rounded p-2 py-3 cursor-pointer'>
+        <div className={`flex gap-6 items-center bor hover:bg-gray-500 duration-200 rounded p-2 py-3 cursor-pointer
+            ${isSelected ? 'bg-gray-500' : ""}
+        `}
+        onClick={() => setSelectedConversation(conversation)}>
             <div className="avatar offline">
                 <div className="w-12 rounded-full">
-                    <img src={sasha} alt='user avatar'/>
+                    <img src={conversation.profilePicture} alt='user avatar'/>
                 </div>
             </div>
             <div className='flex flex-col flex-1'>
                 <div>
-                    <p className='font-bold text-gray-200'>Саша пауков</p>
+                    <p className='font-bold text-gray-200'>{conversation.username}</p>
                 </div>
             </div>
         </div>
-        <div className='divider my-0 py-0 h1 snap-start' />
+
+        {!lastIndex && <div className='divider my-0 py-0 h1 snap-start'/>}
     </>
   )
 }

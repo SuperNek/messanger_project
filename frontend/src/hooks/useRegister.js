@@ -15,7 +15,6 @@ export const useRegister = () => {
         }
         setLoading(true);
         try{
-            console.log(JSON.stringify({firstName, username, password,confirmPassword}))
             const res = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {
